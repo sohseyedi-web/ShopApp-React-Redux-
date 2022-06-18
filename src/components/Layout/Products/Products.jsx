@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import productsData from "./../../../data/Data";
-import styled from 'styled-components'
-import './Products.scss'
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import "./Products.scss";
+import { addItem } from "../../../redux/reducers/shopping-reducer";
 
 const Products = () => {
   const products = productsData;
+  const dispatch = useDispatch();
 
   const Error = styled.div`
     color: #1c3e58;
@@ -31,7 +34,10 @@ const Products = () => {
               فروشنده : {product.producer}
             </div>
             <div className="products-container__box-actions">
-              <button className="products-container__box-actions__btn">
+              <button
+                className="products-container__box-actions__btn"
+                onClick={() => dispatch(addItem(product))}
+              >
                 بره تو سبد
               </button>
               <div className="products-container__box-actions__price">

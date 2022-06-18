@@ -2,8 +2,12 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { FaShopware } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { cartItems } = useSelector((state) => state.shop);
+  const numberCart = cartItems.length;
+
   return (
     <nav className="navbars" dir="rtl">
       <div className="container navbars-container">
@@ -23,7 +27,9 @@ const Navbar = () => {
         <div className="navbars-container__left">
           <Link to={"/cart"} className="navbars-container__left-icon">
             <HiShoppingCart size={28} />
-            <div className="navbars-container__left-icon__num">0</div>
+            <div className="navbars-container__left-icon__num">
+              {numberCart}
+            </div>
           </Link>
           <Link to={"/auth"} className="navbars-container__left-btn">
             <button>ورود / ثبت نام</button>
