@@ -1,0 +1,71 @@
+.navbars {
+  padding: 1rem 0;
+  background-color: #eee;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__right {
+      display: flex;
+      align-items: center;
+
+      &-logo {
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #1c3e58;
+      }
+      &-links {
+        margin-right: 2rem;
+
+        a {
+          margin: 0 1rem;
+          text-decoration: none;
+          color: #252525;
+        }
+      }
+    }
+    &__left {
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        margin-right: 2.5rem;
+        color: #1c3e58;
+
+        &__num {
+          position: absolute;
+          content: "";
+          right: -40%;
+          top: -40%;
+          background-color: #25ce9e;
+          width: 25px;
+          height: 25px;
+          border-radius: 100%;
+          text-align: center;
+          font-size: 1.25rem;
+        }
+      }
+      &-btn{
+          margin-right:2rem;
+
+
+          button{
+              background-color: #1c3e58;
+              color: #fff;
+              border-radius: .5rem;
+              border: none;
+              padding: .5rem 1.2rem;
+              font-size: 1.1rem;
+              font-weight: 500;
+          }
+      }
+    }
+  }
+}
