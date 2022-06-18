@@ -71,7 +71,7 @@ const Slider = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActive(active === dataSlider.length ? 0 : active + 1);
+      setActive(active === dataSlider.length ? 1 : active + 1);
     }, 5000);
     return () => clearInterval(interval);
   }, [active]);

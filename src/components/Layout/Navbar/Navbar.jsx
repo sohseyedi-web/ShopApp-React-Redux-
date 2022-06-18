@@ -25,7 +25,7 @@ const Navbar = () => {
             <HiShoppingCart size={28} />
             <div className="navbars-container__left-icon__num">0</div>
           </Link>
-          <Link to={"/"} className="navbars-container__left-btn">
+          <Link to={"/auth"} className="navbars-container__left-btn">
             <button>ورود / ثبت نام</button>
           </Link>
         </div>
