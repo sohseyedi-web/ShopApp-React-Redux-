@@ -14,7 +14,6 @@
       padding: 0.2rem 0.6rem;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-
       &-img {
         height: 300px;
         width: 100%;
@@ -44,6 +43,13 @@
           padding: 0.5rem 1.2rem;
           font-size: 1.1rem;
           font-weight: 500;
+          transition: all 0.4s ease-in-out;
+
+          &.btn-cart {
+            background-color: #25ce9e;
+            color: #1c3e58;
+            transition: all 0.4s ease-in-out;
+          }
         }
         &__price {
           font-size: 1.2rem;

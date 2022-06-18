@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import productsData from "./../../../data/Data";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import "./Products.scss";
 import { addItem } from "../../../redux/reducers/shopping-reducer";
@@ -9,6 +9,11 @@ import { addItem } from "../../../redux/reducers/shopping-reducer";
 const Products = () => {
   const products = productsData;
   const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.shop);
+
+  const checkInCart = (cartItems, item) => {
+    return cartItems.find((i) => i._id === item._id);
+  };
 
   const Error = styled.div`
     color: #1c3e58;
@@ -35,10 +40,14 @@ const Products = () => {
             </div>
             <div className="products-container__box-actions">
               <button
-                className="products-container__box-actions__btn"
+                className={
+                  checkInCart(cartItems, product)
+                    ? "products-container__box-actions__btn btn-cart"
+                    : "products-container__box-actions__btn"
+                }
                 onClick={() => dispatch(addItem(product))}
               >
-                بره تو سبد
+                {checkInCart(cartItems, product) ? "رفته تو سبد" : "بره تو سبد"}
               </button>
               <div className="products-container__box-actions__price">
                 {product.price} تومان
