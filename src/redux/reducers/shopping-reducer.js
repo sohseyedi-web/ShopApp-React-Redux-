@@ -4,6 +4,7 @@ const initialState = {
   cartItems: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
+  total: 0,
 };
 
 const shoppingReducer = createSlice({
@@ -24,9 +25,12 @@ const shoppingReducer = createSlice({
         updateItem[itemIndex] = updatedCart;
       }
       localStorage.setItem("cart", JSON.stringify(updateItem));
-      return { ...state, cartItems: updateItem };
+      return {
+        ...state,
+        cartItems: updateItem,
+      };
     },
-    removeItem: (state, action) => {
+    removeItem(state, action) {
       const updateItem = [...state.cartItems];
       const itemIndex = updateItem.findIndex(
         (i) => i._id === action.payload._id
@@ -36,20 +40,29 @@ const shoppingReducer = createSlice({
         const filterItem = updateItem.filter(
           (i) => i._id !== action.payload._id
         );
-        return { ...state, cartItems: filterItem };
+        return {
+          ...state,
+          cartItems: filterItem,
+        };
       } else {
         updateCart.quantity--;
         updateItem[itemIndex] = updateCart;
         localStorage.setItem("cart", JSON.stringify(updateItem));
-        return { ...state, cartItems: updateItem };
+        return {
+          ...state,
+          cartItems: updateItem,
+        };
       }
     },
-    deleteItem: (state, action) => {
+    deleteItem(state, action) {
       let updateItem = [...state.cartItems];
       const filtered = updateItem.filter((i) => i._id !== action.payload._id);
       updateItem = filtered;
       localStorage.setItem("cart", JSON.stringify(updateItem));
-      return { ...state, cartItems: updateItem };
+      return {
+        ...state,
+        cartItems: updateItem,
+      };
     },
   },
 });

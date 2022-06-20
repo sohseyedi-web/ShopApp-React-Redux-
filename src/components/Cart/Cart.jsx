@@ -10,13 +10,20 @@ import {
 } from "../../redux/reducers/shopping-reducer";
 
 const Cart = () => {
-  const { cartItems } = useSelector((state) => state.shop);
+  const { cartItems, totalQuantity } = useSelector((state) => state.shop);
+  console.log(cartItems);
+  const totalPrice = cartItems.reduce(
+    (price, total) => price + total.quantity * total.price,
+    0
+  );
+
+  const numberCart = cartItems.reduce(
+    (quntity, total) => quntity + total.quantity,
+    0
+  );
   const dispatch = useDispatch();
   const hasItem = cartItems.length > 0;
-
-  const handleDeleteItem = (product) => {
-    dispatch(deleteItem(product));
-  };
+  let offPrice = 0;
 
   return (
     <Container>
@@ -56,7 +63,7 @@ const Cart = () => {
                       </button>
                       <button
                         className="cart-box__right-box__actions-trash"
-                        onClick={() => handleDeleteItem(cart)}
+                        onClick={() => dispatch(deleteItem(cart))}
                       >
                         <FiTrash size={24} />
                       </button>
@@ -67,19 +74,19 @@ const Cart = () => {
               <div className="cart-box__left">
                 <div className="cart-box__left-total">
                   <span>جمع خرید</span>
-                  <span>{cartItems.length} تومان</span>
+                  <span>{totalPrice} تومان</span>
                 </div>
                 <div className="cart-box__left-count">
                   <span>تعداد محصولات</span>
-                  <span>{cartItems.length} عدد</span>
+                  <span>{numberCart} عدد</span>
                 </div>
                 <div className="cart-box__left-off">
                   <span>تخفیفات</span>
-                  <span>{cartItems.length} تومان</span>
+                  <span>{offPrice} تومان</span>
                 </div>
                 <div className="cart-box__left-finall">
                   <span>مبلغ نهایی</span>
-                  <span>{cartItems.length} تومان</span>
+                  <span>{totalPrice - offPrice} تومان</span>
                 </div>
                 <button className="cart-box__left-btn">ثبت سفارش</button>
               </div>
