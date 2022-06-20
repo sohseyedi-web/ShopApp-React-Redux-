@@ -19,9 +19,9 @@ const Navbar = () => {
             شاپاَپ
           </div>
           <div className="navbars-container__right-links">
-            <Link to={"/"}>خانه</Link>
-            <Link to={"/"}>محصولات</Link>
-            <Link to={"/"}>راهنما</Link>
+            <Link to={"/"}> خانه </Link>
+            <Link to={"/"}> محصولات </Link>
+            <Link to={"/"}> راهنما </Link>
           </div>
         </div>
         <div className="navbars-container__left">

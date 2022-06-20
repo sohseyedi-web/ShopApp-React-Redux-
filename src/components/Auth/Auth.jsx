@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./Auth.scss";
 import Helmet from 'react-helmet'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { FaShopware } from "react-icons/fa";
 
 const initialValues = {
@@ -22,7 +22,7 @@ const validationSchema = Yup.object({
 });
 
 const Auth = () => {
-  const history = useNavigate();
+  // const history = useNavigate();
 
   const onSubmit = (values) => {
     console.log(values);
